@@ -1,5 +1,5 @@
 # 🛡️ AutoBlockBoost
-*AutoBlockBoost is a lightweight World of Warcraft addon that automatically ignores players spamming advertisements for boosting, carries, or gold-selling services. Tired of global channels being flooded with boost ads? This addon filters them out and keeps your chat clean.
+- AutoBlockBoost is a lightweight World of Warcraft addon that automatically ignores players spamming advertisements for boosting, carries, or gold-selling services. Tired of global channels being flooded with boost ads? This addon filters them out and keeps your chat clean.
 
 ## ✨ Features
 - 🚫 Automatically **ignores and hides** spam messages (Trade, General, Yell, Say, Whisper).
