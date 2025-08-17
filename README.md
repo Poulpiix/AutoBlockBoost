@@ -12,8 +12,8 @@
 ## 📥 Installation
 - Downland zip : https://github.com/Poulpiix/AutoBlockBoost/archive/refs/heads/main.zip
 - Copy or move the AutoBlockBoost folder into your WoW AddOns directory:
-  - `Windows (Retail): C:\Program Files (x86)\World of Warcraft\_retail_\Interface\AddOns\
-  - `macOS (Retail): /Applications/World of Warcraft/_retail_/Interface/AddOns/
+  - Windows (Retail): C:\Program Files (x86)\World of Warcraft\_retail_\Interface\AddOns\
+  - macOS (Retail): /Applications/World of Warcraft/_retail_/Interface/AddOns/
 - Launch World of Warcraft
 - At the character selection screen, click AddOns.
 - Make sure AutoBlockBoost is checked.
