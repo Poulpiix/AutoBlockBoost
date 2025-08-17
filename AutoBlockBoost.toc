@@ -1,0 +1,11 @@
+## Interface: 110205
+## Title: AutoBlockBoost
+## Notes: Automatically ignores boost/carry spammers
+## Author: Poulpix
+## Version: 2.3
+## SavedVariables: AutoBlockBoostDB
+## IconTexture: icon.tga
+
+localization.lua
+AutoBlockBoost.lua
+AutoBlockBoostOptions.lua
