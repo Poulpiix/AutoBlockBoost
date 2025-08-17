@@ -1,13 +1,19 @@
-AutoBlockBoost is a lightweight World of Warcraft addon that automatically ignores players spamming advertisements for boosting, carries, or gold-selling services.
+# 🛡️ AutoBlockBoost
+*AutoBlockBoost is a lightweight World of Warcraft addon that automatically ignores players spamming advertisements for boosting, carries, or gold-selling services. Tired of global channels being flooded with boost ads? This addon filters them out and keeps your chat clean.
 
-Tired of global channels being flooded with boost ads? This addon filters them out and keeps your chat clean.
+## ✨ Features
+- 🚫 Automatically **ignores and hides** spam messages (Trade, General, Yell, Say, Whisper).
+- 📋 Customizable keyword list (**default included**: `boost, carry, wts, mythic+, curve, gold only, sale, vip`).
+- ⚙️ Options panel in **Game Menu → Options → AddOns**.
+- 💬 Chat commands:
+  - `/abb toggle` → Enable/disable the addon.
+  - `/abb list` → Show keywords currently blocked.
 
- ✨ Features
-
-🔎 Automatic spam detection: Scans chat messages in say, yell, whispers, and channels.
-🚫 Auto-ignore spammers: Instantly adds offenders to your ignore list.
-📝 Customizable keywords: Manage the list of trigger words in the in-game options panel.
-⚙️ Settings panel integration: Accessible under Esc → Options → AddOns → AutoBlockBoost.
-💾 SavedVariables support: Your keyword list and preferences are saved between sessions.
-💬 Optional alerts: Choose whether to display a message when a player is ignored.
-🎨 Addon icon included: Appears in the AddOns list at character select.
+## 📥 Installation
+- Downland zip : https://github.com/Poulpiix/AutoBlockBoost/archive/refs/heads/main.zip
+- Copy or move the AutoBlockBoost folder into your WoW AddOns directory:
+  - `Windows (Retail): C:\Program Files (x86)\World of Warcraft\_retail_\Interface\AddOns\
+  - `macOS (Retail): /Applications/World of Warcraft/_retail_/Interface/AddOns/
+- Launch World of Warcraft
+- At the character selection screen, click AddOns.
+- Make sure AutoBlockBoost is checked.
