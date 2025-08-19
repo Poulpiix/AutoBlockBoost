@@ -1,49 +1,50 @@
--- localization.lua
+local _, ns = ...
+ns.L = {}
 
-AutoBlockBoost_L = AutoBlockBoost_L or {}
+local L = ns.L
 
--- English
-AutoBlockBoost_L["LOADED"] = "Loaded and active"
-AutoBlockBoost_L["ENABLED"] = "AutoBlockBoost enabled"
-AutoBlockBoost_L["DISABLED"] = "AutoBlockBoost disabled"
-AutoBlockBoost_L["IGNORED"] = "Player %s ignored (matched: %s)"
-AutoBlockBoost_L["Enable AutoBlockBoost"] = "Enable AutoBlockBoost"
-AutoBlockBoost_L["Print alerts in chat"] = "Print alerts in chat"
-AutoBlockBoost_L["EDITBOX_HELP"] = "Enter keywords to block (one per line). Default list is already included."
-AutoBlockBoost_L["TIP_TOGGLE"] = "Tip: use /abb toggle in chat to enable/disable the addon."
+-- Default EN
+L["TITLE"]       = "AutoBlockBoost"
+L["DESC"]        = "Automatically blocks and ignores boost spammers.\nAdd keywords (one per line) in the box below."
+L["DISABLE_CMD"] = "Type /abb toggle to enable/disable AutoBlockBoost."
+L["ENABLE"]      = "Enable addon"
+L["SILENT"]      = "Ignore silently (do not add players to ignore list)"
+L["SAVE"]        = "Save"
+L["CREATOR"]     = "Creator"
+L["LINK"]        = "Link"
 
--- French
+-- FR
 if GetLocale() == "frFR" then
-    AutoBlockBoost_L["LOADED"] = "Chargé et actif"
-    AutoBlockBoost_L["ENABLED"] = "AutoBlockBoost activé"
-    AutoBlockBoost_L["DISABLED"] = "AutoBlockBoost désactivé"
-    AutoBlockBoost_L["IGNORED"] = "Joueur %s ignoré (mot détecté : %s)"
-    AutoBlockBoost_L["Enable AutoBlockBoost"] = "Activer AutoBlockBoost"
-    AutoBlockBoost_L["Print alerts in chat"] = "Afficher les alertes dans le chat"
-    AutoBlockBoost_L["EDITBOX_HELP"] = "Entrez les mots à bloquer (un par ligne). La liste par défaut est déjà incluse."
-    AutoBlockBoost_L["TIP_TOGGLE"] = "Astuce : utilisez /abb toggle pour activer/désactiver l'addon."
+    L["TITLE"]       = "AutoBlockBoost"
+    L["DESC"]        = "Bloque automatiquement les spammeurs de boost.\nAjoutez des mots-clés (un par ligne) dans la boîte ci-dessous."
+    L["DISABLE_CMD"] = "Tapez /abb toggle pour activer/désactiver AutoBlockBoost."
+    L["ENABLE"]      = "Activer l'addon"
+    L["SILENT"]      = "Ignorer silencieusement (ne pas ajouter les joueurs à la liste d'ignorés)"
+    L["SAVE"]        = "Enregistrer"
+    L["CREATOR"]     = "Créateur"
+    L["LINK"]        = "Lien"
 end
 
--- German
+-- DE
 if GetLocale() == "deDE" then
-    AutoBlockBoost_L["LOADED"] = "Geladen und aktiv"
-    AutoBlockBoost_L["ENABLED"] = "AutoBlockBoost aktiviert"
-    AutoBlockBoost_L["DISABLED"] = "AutoBlockBoost deaktiviert"
-    AutoBlockBoost_L["IGNORED"] = "Spieler %s ignoriert (gefunden: %s)"
-    AutoBlockBoost_L["Enable AutoBlockBoost"] = "AutoBlockBoost aktivieren"
-    AutoBlockBoost_L["Print alerts in chat"] = "Warnungen im Chat anzeigen"
-    AutoBlockBoost_L["EDITBOX_HELP"] = "Geben Sie Schlüsselwörter ein, die blockiert werden sollen (eine pro Zeile). Standardliste ist bereits enthalten."
-    AutoBlockBoost_L["TIP_TOGGLE"] = "Tipp: Mit /abb toggle das Addon aktivieren/deaktivieren."
+    L["TITLE"]       = "AutoBlockBoost"
+    L["DESC"]        = "Blockiert automatisch Boost-Spammer.\nFügen Sie unten Schlüsselwörter hinzu (ein Wort pro Zeile)."
+    L["DISABLE_CMD"] = "Geben Sie /abb toggle ein, um AutoBlockBoost zu aktivieren/deaktivieren."
+    L["ENABLE"]      = "Addon aktivieren"
+    L["SILENT"]      = "Stumm schalten (Spieler nicht auf Ignorierliste setzen)"
+    L["SAVE"]        = "Speichern"
+    L["CREATOR"]     = "Ersteller"
+    L["LINK"]        = "Link"
 end
 
--- Italian
+-- IT
 if GetLocale() == "itIT" then
-    AutoBlockBoost_L["LOADED"] = "Caricato e attivo"
-    AutoBlockBoost_L["ENABLED"] = "AutoBlockBoost abilitato"
-    AutoBlockBoost_L["DISABLED"] = "AutoBlockBoost disabilitato"
-    AutoBlockBoost_L["IGNORED"] = "Giocatore %s ignorato (trovato: %s)"
-    AutoBlockBoost_L["Enable AutoBlockBoost"] = "Abilita AutoBlockBoost"
-    AutoBlockBoost_L["Print alerts in chat"] = "Mostra avvisi in chat"
-    AutoBlockBoost_L["EDITBOX_HELP"] = "Inserisci le parole da bloccare (una per riga). La lista predefinita è già inclusa."
-    AutoBlockBoost_L["TIP_TOGGLE"] = "Suggerimento: usa /abb toggle per abilitare/disabilitare l'addon."
+    L["TITLE"]       = "AutoBlockBoost"
+    L["DESC"]        = "Blocca automaticamente gli spammer di boost.\nAggiungi parole chiave (una per riga) nella casella qui sotto."
+    L["DISABLE_CMD"] = "Digita /abb toggle per abilitare/disabilitare AutoBlockBoost."
+    L["ENABLE"]      = "Abilita addon"
+    L["SILENT"]      = "Ignora silenziosamente (non aggiungere i giocatori alla lista ignorati)"
+    L["SAVE"]        = "Salva"
+    L["CREATOR"]     = "Creatore"
+    L["LINK"]        = "Link"
 end
