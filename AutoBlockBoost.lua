@@ -1,83 +1,69 @@
--- AutoBlockBoost.lua
 local ADDON_NAME, ns = ...
-AutoBlockBoost = {}
-AutoBlockBoost_L = AutoBlockBoost_L or {}
+local L = ns.L
 
--- Default SavedVariables
 AutoBlockBoostDB = AutoBlockBoostDB or {
     enabled = true,
-    printAlerts = true,
-    keywords = { "boost", "carry", "wts", "mythic+", "curve", "gold only", "sale", "vip" }
+    silent = false,
+    keywords = { "boost", "carry", "wts", "mythic+", "curve", "gold only", "sale", "VIP" }
 }
 
--- Localization fallback
-local function L(key)
-    return AutoBlockBoost_L[key] or key
+local function Print(msg)
+    DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00[ABB]|r " .. msg)
 end
 
--- Utility: normalize string
-local function ABB_Normalize(str)
-    return string.lower(str or "")
-end
-
--- Add player to ignore
-local function ABB_AddIgnore(player, word)
-    if not player or player == "" then return end
-    C_FriendList.AddIgnore(player)
-    if AutoBlockBoostDB.printAlerts then
-        print(string.format("[%s] " .. L("IGNORED"), ADDON_NAME, player, word))
+SLASH_AUTOBLOCKBOOST1 = "/abb"
+SlashCmdList["AUTOBLOCKBOOST"] = function(msg)
+    msg = msg:lower()
+    if msg == "toggle" then
+        AutoBlockBoostDB.enabled = not AutoBlockBoostDB.enabled
+        Print((AutoBlockBoostDB.enabled and "|cff00ff00Enabled|r" or "|cffff0000Disabled|r"))
+    elseif msg == "list" then
+        Print("Blocked keywords: " .. table.concat(AutoBlockBoostDB.keywords, ", "))
+    else
+        Print("Usage: /abb toggle | list")
     end
 end
 
--- Chat Filter
-local function ABB_ChatFilter(self, event, msg, author, ...)
-    if not AutoBlockBoostDB.enabled then return false end
-    if not msg or not author then return false end
+local lastIgnore = {}
 
-    local lowerMsg = ABB_Normalize(msg)
-
-    for _, word in ipairs(AutoBlockBoostDB.keywords or {}) do
-        if lowerMsg:find(word, 1, true) then
-            ABB_AddIgnore(author, word)
-            return true -- hide the message
+local function IsIgnored(playerName)
+    for i = 1, C_FriendList.GetNumIgnores() do
+        if C_FriendList.GetIgnoreName(i) == playerName then
+            return true
         end
     end
     return false
 end
 
--- Register filters for relevant events
-local function ABB_RegisterFilters()
-    ChatFrame_AddMessageEventFilter("CHAT_MSG_CHANNEL", ABB_ChatFilter)
-    ChatFrame_AddMessageEventFilter("CHAT_MSG_SAY", ABB_ChatFilter)
-    ChatFrame_AddMessageEventFilter("CHAT_MSG_YELL", ABB_ChatFilter)
-    ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER", ABB_ChatFilter)
-end
-
--- Slash command
-SLASH_AUTOBLOCKBOOST1 = "/abb"
-SlashCmdList["AUTOBLOCKBOOST"] = function(msg)
-    msg = ABB_Normalize(msg)
-    if msg == "toggle" then
-        AutoBlockBoostDB.enabled = not AutoBlockBoostDB.enabled
-        print("[" .. ADDON_NAME .. "] " .. (AutoBlockBoostDB.enabled and L("ENABLED") or L("DISABLED")))
-    elseif msg == "list" then
-        print("[" .. ADDON_NAME .. "] Keywords: " .. table.concat(AutoBlockBoostDB.keywords, ", "))
-    else
-        print("[" .. ADDON_NAME .. "] Commands: /abb toggle, /abb list")
-    end
-end
-
--- Event frame
-local f = CreateFrame("Frame")
-f:RegisterEvent("PLAYER_LOGIN")
-f:SetScript("OnEvent", function(self, event, ...)
-    if event == "PLAYER_LOGIN" then
-        ABB_RegisterFilters()
-
-        if AutoBlockBoostDB.enabled then
-            print("[" .. ADDON_NAME .. "] " .. L("LOADED") .. " - " .. L("TIP_TOGGLE"))
-        else
-            print("[" .. ADDON_NAME .. "] " .. L("DISABLED") .. " - " .. L("TIP_TOGGLE"))
+local function SafeIgnore(sender)
+    if AutoBlockBoostDB.silent then return end
+    local now = time()
+    if not lastIgnore[sender] or (now - lastIgnore[sender] > 30) then
+        if not IsIgnored(sender) then
+            C_FriendList.AddIgnore(sender)
+            lastIgnore[sender] = now
         end
     end
+end
+
+local function ChatFilter(self, event, msg, sender, ...)
+    if not AutoBlockBoostDB.enabled then return false end
+    for _, word in ipairs(AutoBlockBoostDB.keywords) do
+        if msg:lower():find(word:lower()) then
+            SafeIgnore(sender)
+            return true
+        end
+    end
+    return false
+end
+
+for _, e in ipairs({ "CHAT_MSG_CHANNEL", "CHAT_MSG_SAY", "CHAT_MSG_YELL", "CHAT_MSG_WHISPER" }) do
+    ChatFrame_AddMessageEventFilter(e, ChatFilter)
+end
+
+-- On login message
+local f = CreateFrame("Frame")
+f:RegisterEvent("PLAYER_LOGIN")
+f:SetScript("OnEvent", function()
+    Print(L["DISABLE_CMD"])
 end)
