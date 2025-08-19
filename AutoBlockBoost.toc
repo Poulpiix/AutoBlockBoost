@@ -2,7 +2,8 @@
 ## Title: AutoBlockBoost
 ## Notes: Automatically ignores boost/carry spammers
 ## Author: Poulpix
-## Version: 2.3
+## Version: 2.4
+## DefaultLocale: enUS
 ## SavedVariables: AutoBlockBoostDB
 ## IconTexture: icon.tga
 
